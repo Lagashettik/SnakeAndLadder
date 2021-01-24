@@ -7,12 +7,10 @@ public class SnakeAndLadder {
 
 	void Game(){
 		int PlayerPosition=0;
-		int temp;
 
 		while (PlayerPosition < 100){
 			int RollDice=(int) ( (Math.floor (Math.random() * 10) % 6) + 1);
 			System.out.println("The Dice Roll is "+RollDice);
-			temp = PlayerPosition;
 
 			int PlayerCheck=(int) Math.floor(Math.random() * 10) % 3;
 			// PlayerCheck= 0 Then Player goes down by Snake
@@ -36,7 +34,7 @@ public class SnakeAndLadder {
 					PlayerPosition=0;
 
 			if(PlayerPosition > 100)
-					PlayerPosition=temp;
+					PlayerPosition-=RollDice;
 
 			System.out.println("Player Position is "+PlayerPosition);
 		}
