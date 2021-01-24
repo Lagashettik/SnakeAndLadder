@@ -7,11 +7,11 @@ public class SnakeAndLadder {
 
 	void Game(){
 		int PlayerPosition=0;
-
+		int DiceRollCount=0;
 		while (PlayerPosition < 100){
 			int RollDice=(int) ( (Math.floor (Math.random() * 10) % 6) + 1);
 			System.out.println("The Dice Roll is "+RollDice);
-
+			DiceRollCount++;
 			int PlayerCheck=(int) Math.floor(Math.random() * 10) % 3;
 			// PlayerCheck= 0 Then Player goes down by Snake
 			// PlayerCheck= 1 Then Player  Not Play
@@ -38,6 +38,7 @@ public class SnakeAndLadder {
 
 			System.out.println("Player Position is "+PlayerPosition);
 		}
+		System.out.println("Dice Roll Count is "+DiceRollCount);
 	}
 	public static void main(String args[]) {
 	SnakeAndLadder Snake=new SnakeAndLadder();
