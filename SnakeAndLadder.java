@@ -6,12 +6,19 @@ public class SnakeAndLadder {
 	}
 
 	void Game(){
-		int PlayerPosition=0;
+		int PlayerPosition1=0;
+		int PlayerPosition2=0;
 		int DiceRollCount=0;
-		while (PlayerPosition < 100){
+		int PlayPosition=0;
+		int Play=0;
+
+		while (PlayerPosition1 < 100 && PlayerPosition2 < 100) {
+
 			int RollDice=(int) ( (Math.floor (Math.random() * 10) % 6) + 1);
 			System.out.println("The Dice Roll is "+RollDice);
 			DiceRollCount++;
+			Play++;
+
 			int PlayerCheck=(int) Math.floor(Math.random() * 10) % 3;
 			// PlayerCheck= 0 Then Player goes down by Snake
 			// PlayerCheck= 1 Then Player  Not Play
@@ -20,23 +27,43 @@ public class SnakeAndLadder {
 			switch (PlayerCheck) {
 				case 0:
 						System.out.println("SNAKE");
-						PlayerPosition-=RollDice;
+						PlayPosition-=RollDice;
 						break;
 				case 1:
 						System.out.println("No Play");
 						break;
 				case 2:
 						System.out.println("LADDER");
-						PlayerPosition+=RollDice;
+						PlayPosition+=RollDice;
+						RollDice=(int) ( (Math.floor (Math.random() * 10) % 6) + 1);
+						PlayPosition+=RollDice;
+						DiceRollCount++;
 						break;
 					}
-			if(PlayerPosition < 0)
-					PlayerPosition=0;
 
-			if(PlayerPosition > 100)
-					PlayerPosition-=RollDice;
+			if((Play%2) == 0){
+				PlayerPosition2+=PlayPosition;
 
-			System.out.println("Player Position is "+PlayerPosition);
+				if(PlayerPosition2 < 0)
+						PlayerPosition2=0;
+
+				if(PlayerPosition2 > 100)
+						PlayerPosition2-=PlayPosition;
+
+				System.out.println("Player2 Position is "+PlayerPosition2);
+					}
+			else {
+				PlayerPosition1+=PlayPosition;
+
+				if(PlayerPosition1 < 0)
+						PlayerPosition1=0;
+
+				if(PlayerPosition1 > 100)
+						PlayerPosition1-=PlayPosition;
+
+				System.out.println("Player1 Position is "+PlayerPosition1);
+				}
+			PlayPosition=0;
 		}
 		System.out.println("Dice Roll Count is "+DiceRollCount);
 	}
